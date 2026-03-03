@@ -63,6 +63,6 @@ This task has 3 parts to be extended/implemented - Table, Detail and your custom
 
 ## The expected output
 
-- Send the link to your public github/gitlab where the TeskaLabs Training UI App is being cloned and extended. We will go through the code.
+- Attach the link of your public github/gitlab where the TeskaLabs Training UI App is being cloned and extended. We will go through the code.
 
 - Did you complete this task? Send the result (links) to [frantisek.pesek@teskalabs.com](mailto:frantisek.pesek@teskalabs.com)
