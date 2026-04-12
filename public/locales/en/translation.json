@@ -1,90 +1,95 @@
 {
-	"i18n": {
-		"language": {
-			"en": "English",
-			"cs": "Česky"
-		},
-		"Language": "Language"
-	},
+  "i18n": {
+    "language": {
+      "en": "English",
+      "cs": "Česky"
+    },
+    "Language": "Language"
+  },
 
-	"AboutCard": {
-		"About": "About",
-		"Website": "Website",
-		"Vendor": "Vendor"
-	},
+  "AboutCard": {
+    "About": "About",
+    "Website": "Website",
+    "Vendor": "Vendor"
+  },
 
-	"ASABApplicationContainer": {
-		"Service URL is undefined, please check service paths passed to axios": "Service URL is undefined, please check service paths passed to axios",
-		"WebSocket URL is undefined, please check service and subpath passed to WebSocket": "WebSocket URL is undefined, please check service and subpath passed to WebSocket",
-		"Advanced mode enabled": "Advanced mode enabled",
-		"Advanced mode disabled": "Advanced mode disabled",
-		"Fullscreen mode turned on. To turn it off, press CTRL + SHIFT + F.": "Fullscreen mode turned on. To turn it off, press CTRL + SHIFT + F.",
-		"Fullscreen mode turned off": "Fullscreen mode turned off"
-	},
+  "ASABApplicationContainer": {
+    "Service URL is undefined, please check service paths passed to axios": "Service URL is undefined, please check service paths passed to axios",
+    "WebSocket URL is undefined, please check service and subpath passed to WebSocket": "WebSocket URL is undefined, please check service and subpath passed to WebSocket",
+    "Advanced mode enabled": "Advanced mode enabled",
+    "Advanced mode disabled": "Advanced mode disabled",
+    "Fullscreen mode turned on. To turn it off, press CTRL + SHIFT + F.": "Fullscreen mode turned on. To turn it off, press CTRL + SHIFT + F.",
+    "Fullscreen mode turned off": "Fullscreen mode turned off"
+  },
 
-	"UserInterfaceCard": {
-		"User interface": "User interface",
-		"Build date": "Build date",
-		"Version": "Version",
-		"Repository": "Repository"
-	},
+  "UserInterfaceCard": {
+    "User interface": "User interface",
+    "Build date": "Build date",
+    "Version": "Version",
+    "Repository": "Repository"
+  },
 
-	"HelpButton": {
-		"Show help info": "Show help info",
-		"Help": "Help"
-	},
+  "HelpButton": {
+    "Show help info": "Show help info",
+    "Help": "Help"
+  },
 
-	"Console": {
-		"Wrap lines": "Wrap lines",
-		"Unwrap lines": "Unwrap lines"
-	},
+  "Console": {
+    "Wrap lines": "Wrap lines",
+    "Unwrap lines": "Unwrap lines"
+  },
 
-	"InvalidRouteScreen": {
-		"Nothing here": "Nothing here",
-		"Sorry, we can't find the page you are looking for.": "Sorry, we can't find the page you are looking for."
-	},
+  "InvalidRouteScreen": {
+    "Nothing here": "Nothing here",
+    "Sorry, we can't find the page you are looking for.": "Sorry, we can't find the page you are looking for."
+  },
 
-	"General": {
-		"Name": "Name",
-		"Description": "Description",
-		"Created at": "Created at",
-		"Modified at": "Modified at",
-		"Expires at": "Expires at",
-		"Search": "Search",
-		"Save": "Save",
-		"Cancel": "Cancel",
-		"Clear": "Clear",
-		"Remove": "Remove",
-		"Edit": "Edit",
-		"Download": "Download",
-		"Back": "Back",
-		"Continue": "Continue",
-		"Close": "Close",
-		"Tenant": "Tenant",
-		"Your session will expire soon": "Your session will expire soon",
-		"Change theme": "Change theme",
-		"Page": "Page",
-		"Pages": "Pages",
-		"No items": "No items",
-		"No data": "No data",
-		"Feature preview": "Feature preview",
-		"Items per page": "Items per page",
-		"Failed to load rows to the data table": "Failed to load rows to the data table",
-		"of": "of",
-		"item(s)": "item(s)",
-		"page(s)": "page(s)",
-		"Shift + left mouse click for advanced sorting": "Shift + left mouse click for advanced sorting",
-		"Shift + left mouse click to remove from sorting": "Shift + left mouse click to remove from sorting",
-		"Something went wrong": "Something went wrong!",
-		"There was an issue processing a request": "There was an issue processing a request",
-		"You do not have access rights to perform this action": "You do not have access rights to perform this action",
-		"You have unsaved changes, do you want to discard them?": "You have unsaved changes, do you want to discard them?",
-		"Fullscreen": "Fullscreen",
-		"Exit Fullscreen": "Exit Fullscreen",
-		"Invalid Date": "Invalid Date"
-	},
+  "General": {
+    "Name": "Name",
+    "Description": "Description",
+    "Created at": "Created at",
+    "Modified at": "Modified at",
+    "Expires at": "Expires at",
+    "Search": "Search",
+    "Save": "Save",
+    "Cancel": "Cancel",
+    "Clear": "Clear",
+    "Remove": "Remove",
+    "Edit": "Edit",
+    "Download": "Download",
+    "Back": "Back",
+    "Continue": "Continue",
+    "Close": "Close",
+    "Tenant": "Tenant",
+    "Your session will expire soon": "Your session will expire soon",
+    "Change theme": "Change theme",
+    "Page": "Page",
+    "Pages": "Pages",
+    "No items": "No items",
+    "No data": "No data",
+    "Feature preview": "Feature preview",
+    "Items per page": "Items per page",
+    "Failed to load rows to the data table": "Failed to load rows to the data table",
+    "of": "of",
+    "item(s)": "item(s)",
+    "page(s)": "page(s)",
+    "Shift + left mouse click for advanced sorting": "Shift + left mouse click for advanced sorting",
+    "Shift + left mouse click to remove from sorting": "Shift + left mouse click to remove from sorting",
+    "Something went wrong": "Something went wrong!",
+    "There was an issue processing a request": "There was an issue processing a request",
+    "You do not have access rights to perform this action": "You do not have access rights to perform this action",
+    "You have unsaved changes, do you want to discard them?": "You have unsaved changes, do you want to discard them?",
+    "Fullscreen": "Fullscreen",
+    "Exit Fullscreen": "Exit Fullscreen",
+    "Invalid Date": "Invalid Date"
+  },
 
-	"Training": {
-		"Hello, there is nothing here yet!": "Hello, there is nothing here yet!"
-	}
+  "Training": {
+    "Hello, there is nothing here yet!": "Hello, there is nothing here yet!",
+    "Username": "Username",
+    "Email": "Email",
+    "Address": "Address",
+    "Created": "Created",
+    "Last sign in": "Last sign in"
+  }
 }

@@ -1,90 +1,95 @@
 {
-	"i18n": {
-		"language": {
-			"en": "English",
-			"cs": "Česky"
-		},
-		"Language": "Jazyk"
-	},
+  "i18n": {
+    "language": {
+      "en": "English",
+      "cs": "Česky"
+    },
+    "Language": "Jazyk"
+  },
 
-	"AboutCard": {
-		"About": "O Aplikaci",
-		"Website": "Webová stránka",
-		"Vendor": "Výrobce"
-	},
+  "AboutCard": {
+    "About": "O Aplikaci",
+    "Website": "Webová stránka",
+    "Vendor": "Výrobce"
+  },
 
-	"ASABApplicationContainer": {
-		"Service URL is undefined, please check service paths passed to axios": "URL servicy není definována, prosím zkontrolujte nastavení cest servis předávaných axiosu",
-		"WebSocket URL is undefined, please check service and subpath passed to WebSocket": "WebSocket URL není definována, prosím zkontrolujte nastavení servis a dílčích cest předávaných WebSocketu",
-		"Advanced mode enabled": "Pokročilý režim aktivován",
-		"Advanced mode disabled": "Pokročilý režim deaktivován",
-		"Fullscreen mode turned on. To turn it off, press CTRL + SHIFT + F.": "Zapnut režim celé obrazovky. Režim vypnete stisknutím kombinace kláves CTRL + SHIFT + F.",
-		"Fullscreen mode turned off": "Vypnut režim celé obrazovky"
-	},
+  "ASABApplicationContainer": {
+    "Service URL is undefined, please check service paths passed to axios": "URL servicy není definována, prosím zkontrolujte nastavení cest servis předávaných axiosu",
+    "WebSocket URL is undefined, please check service and subpath passed to WebSocket": "WebSocket URL není definována, prosím zkontrolujte nastavení servis a dílčích cest předávaných WebSocketu",
+    "Advanced mode enabled": "Pokročilý režim aktivován",
+    "Advanced mode disabled": "Pokročilý režim deaktivován",
+    "Fullscreen mode turned on. To turn it off, press CTRL + SHIFT + F.": "Zapnut režim celé obrazovky. Režim vypnete stisknutím kombinace kláves CTRL + SHIFT + F.",
+    "Fullscreen mode turned off": "Vypnut režim celé obrazovky"
+  },
 
-	"UserInterfaceCard": {
-		"User interface": "Uživatelské rozhraní",
-		"Build date": "Datum sestavení",
-		"Version": "Verze",
-		"Repository": "Repozitář"
-	},
+  "UserInterfaceCard": {
+    "User interface": "Uživatelské rozhraní",
+    "Build date": "Datum sestavení",
+    "Version": "Verze",
+    "Repository": "Repozitář"
+  },
 
-	"HelpButton": {
-		"Show help info": "Zobrazit informace o nápovědě",
-		"Help": "Nápověda"
-	},
+  "HelpButton": {
+    "Show help info": "Zobrazit informace o nápovědě",
+    "Help": "Nápověda"
+  },
 
-	"Console": {
-		"Wrap lines": "Zalomit řádky",
-		"Unwrap lines": "Rozbalit řádky"
-	},
+  "Console": {
+    "Wrap lines": "Zalomit řádky",
+    "Unwrap lines": "Rozbalit řádky"
+  },
 
-	"InvalidRouteScreen": {
-		"Nothing here": "Zde nic není",
-		"Sorry, we can't find the page you are looking for.": "Omlouváme se, ale nepodařilo se nám najít stránku, kterou hledáte."
-	},
+  "InvalidRouteScreen": {
+    "Nothing here": "Zde nic není",
+    "Sorry, we can't find the page you are looking for.": "Omlouváme se, ale nepodařilo se nám najít stránku, kterou hledáte."
+  },
 
-	"General": {
-		"Resolution": "Rozlišení",
-		"Name": "Název",
-		"Description": "Popis",
-		"Created at": "Vytvořeno",
-		"Modified at": "Upraveno",
-		"Expires at": "Vyprší",
-		"Search": "Vyhledat",
-		"Save": "Uložit",
-		"Cancel": "Zrušit",
-		"Clear": "Vyčistit",
-		"Remove": "Odstranit",
-		"Edit": "Upravit",
-		"Download": "Stáhnout",
-		"Back": "Zpět",
-		"Continue": "Pokračujte",
-		"Close": "Zavřít",
-		"Your session will expire soon": "Vaše relace brzy vyprší",
-		"Change theme": "Změna pozadí",
-		"Page": "Stránky",
-		"Pages": "Stránek",
-		"No items": "Žádné položky",
-		"No data": "Žádná data",
-		"Feature preview": "Náhled funkce",
-		"Items per page": "Položek na stránku",
-		"Failed to load rows to the data table": "Nepodařilo se načíst řádky do tabulky",
-		"of": "z",
-		"item(s)": "položek",
-		"page(s)": "stránek",
-		"Shift + left mouse click for advanced sorting": "Shift + levé tlačítko myši pro pokročilé seřazení",
-		"Shift + left mouse click to remove from sorting": "Shift + levé tlačítko myši pro odebrání z řazení",
-		"Something went wrong": "Něco je špatně!",
-		"There was an issue processing a request": "Vyskytl se problém při zpracování požadavku",
-		"You do not have access rights to perform this action": "Váš přístup je omezen, nemáte dostatečná oprávnění",
-		"You have unsaved changes, do you want to discard them?": "Máte neuložené změny, přejete si je zrušit?",
-		"Fullscreen": "Celá obrazovka",
-		"Exit Fullscreen": "Opustit celou obrazovku",
-		"Invalid Date": "Nesprávné datum"
-	},
+  "General": {
+    "Resolution": "Rozlišení",
+    "Name": "Název",
+    "Description": "Popis",
+    "Created at": "Vytvořeno",
+    "Modified at": "Upraveno",
+    "Expires at": "Vyprší",
+    "Search": "Vyhledat",
+    "Save": "Uložit",
+    "Cancel": "Zrušit",
+    "Clear": "Vyčistit",
+    "Remove": "Odstranit",
+    "Edit": "Upravit",
+    "Download": "Stáhnout",
+    "Back": "Zpět",
+    "Continue": "Pokračujte",
+    "Close": "Zavřít",
+    "Your session will expire soon": "Vaše relace brzy vyprší",
+    "Change theme": "Změna pozadí",
+    "Page": "Stránky",
+    "Pages": "Stránek",
+    "No items": "Žádné položky",
+    "No data": "Žádná data",
+    "Feature preview": "Náhled funkce",
+    "Items per page": "Položek na stránku",
+    "Failed to load rows to the data table": "Nepodařilo se načíst řádky do tabulky",
+    "of": "z",
+    "item(s)": "položek",
+    "page(s)": "stránek",
+    "Shift + left mouse click for advanced sorting": "Shift + levé tlačítko myši pro pokročilé seřazení",
+    "Shift + left mouse click to remove from sorting": "Shift + levé tlačítko myši pro odebrání z řazení",
+    "Something went wrong": "Něco je špatně!",
+    "There was an issue processing a request": "Vyskytl se problém při zpracování požadavku",
+    "You do not have access rights to perform this action": "Váš přístup je omezen, nemáte dostatečná oprávnění",
+    "You have unsaved changes, do you want to discard them?": "Máte neuložené změny, přejete si je zrušit?",
+    "Fullscreen": "Celá obrazovka",
+    "Exit Fullscreen": "Opustit celou obrazovku",
+    "Invalid Date": "Nesprávné datum"
+  },
 
-	"Training": {
-		"Hello, there is nothing here yet!": "Zdravíčko, zatím tu nic není!"
-	}
+  "Training": {
+    "Hello, there is nothing here yet!": "Zdravíčko, zatím tu nic není!",
+    "Username": "Uživatelské jméno",
+    "Email": "E-mail",
+    "Address": "Adresa",
+    "Created": "Vytvořeno",
+    "Last sign in": "Poslední přihlášení"
+  }
 }

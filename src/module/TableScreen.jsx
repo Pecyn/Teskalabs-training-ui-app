@@ -1,32 +1,37 @@
 import React from 'react';
 import { Container } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router';
 import { DataTableCard2, DateTime } from 'asab_webui_components';
 
 const DATA_URL = 'https://devtest.teskalabs.com/data';
-const COLUMNS = [
+const getColumns = (t) => [
   {
-    title: 'Username',
+    title: t('Training|Username'),
     sort: 'username',
-    render: ({ row }) => <span title={row.id}>{row.username}</span>,
+    render: ({ row }) => (
+      <Link title={row.id} to={`/detail/${row.username}`}>
+        {row.username}
+      </Link>
+    ),
   },
   {
-    title: 'Email',
+    title: t('Training|Email'),
     sort: 'email',
     render: ({ row }) => <span>{row.email}</span>,
   },
   {
-    title: 'Address',
+    title: t('Training|Address'),
     sort: 'address',
     render: ({ row }) => <span>{row.address}</span>,
   },
   {
-    title: 'Created',
+    title: t('Training|Created'),
     sort: 'created',
     render: ({ row }) => <DateTime value={row.created} />,
   },
   {
-    title: 'Last sign in',
+    title: t('Training|Last sign in'),
     sort: 'last_sign_in',
     render: ({ row }) => <DateTime value={row.last_sign_in} />,
   },
@@ -42,9 +47,11 @@ const loader = async ({ params }) => {
 };
 
 export function TableScreen(props) {
+  const { t } = useTranslation();
+  const columns = getColumns(t);
   return (
     <Container className="h-100">
-      <DataTableCard2 columns={COLUMNS} loader={loader} />
+      <DataTableCard2 columns={columns} initialLimit={10} loader={loader} />
     </Container>
   );
 }
