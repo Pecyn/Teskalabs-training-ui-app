@@ -4,6 +4,7 @@ import { Module } from 'asab_webui_components';
 
 import { TableScreen } from './TableScreen.jsx';
 import { DetailScreen } from './DetailScreen.jsx';
+import { DashboardScreen } from './DashboardScreen.jsx';
 
 export default class TableApplicationModule extends Module {
 	constructor(app, name) {
@@ -16,6 +17,12 @@ export default class TableApplicationModule extends Module {
 		});
 
 		app.Router.addRoute({
+			path: '/dashboard',
+			name: 'Dashboard',
+			component: DashboardScreen,
+		});
+
+		app.Router.addRoute({
 			path: '/table',
 			name: 'Table',
 			component: TableScreen,
@@ -25,6 +32,12 @@ export default class TableApplicationModule extends Module {
 			path: '/table/:id',
 			name: 'Detail',
 			component: DetailScreen,
+		});
+
+		app.Navigation.addItem({
+			name: 'Dashboard',
+			icon: 'bi bi-speedometer2',
+			url: '/dashboard',
 		});
 
 		app.Navigation.addItem({
