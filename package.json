@@ -2,6 +2,7 @@
 	"name": "teskalabs_training_ui_app",
 	"version": "26.1.1",
 	"main": "index.js",
+	"packageManager": "pnpm@10.33.0",
 	"scripts": {
 		"start": "webpack serve --config webpack/webpack.dev.js",
 		"build": "webpack --config webpack/webpack.build.js"
@@ -27,7 +28,6 @@
 		"@microlink/react-json-view": "^1.26.2",
 		"react-router": "^7.8.2",
 		"reactstrap": "^9.2.0",
-
 		"i18next-browser-languagedetector": "^8.2.0",
 		"asab_webui_components": "^27.1.1",
 		"asab_webui_shell": "^27.1.1"
