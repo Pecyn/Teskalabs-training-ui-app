@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Container, Card, CardHeader, CardBody } from 'reactstrap';
-import { DateTime, CopyableInput } from 'asab_webui_components';
+import { DateTime, CopyableInput, usePubSub } from 'asab_webui_components';
 
 const DETAIL_URL = 'https://devtest.teskalabs.com/detail';
 
@@ -18,29 +18,68 @@ function CardBodyItem({ label, children }) {
 export function DetailScreen() {
   const { id } = useParams();
   const { t } = useTranslation();
+  const { app } = usePubSub();
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const loadDetail = async () => {
+    setIsLoading(true);
+    try {
+      const res = await fetch(`${DETAIL_URL}/${id}`);
+      if (!res.ok) {
+        throw new Error(`Data fetch failed with status ${res.status}`);
+      }
+      const json = await res.json();
+      setData(json);
+    } catch (e) {
+      app.addAlertFromException(e, t('Training|Failed to load detail'));
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    fetch(`${DETAIL_URL}/${id}`)
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then(setData)
-      .catch((err) => setError(err.message));
+    loadDetail();
   }, [id]);
 
-  if (error)
+  if (isLoading)
     return (
-      <Container>
-        <p className="text-danger">{error}</p>
+      <Container className="mt-3">
+        <Card>
+          <CardHeader>
+            <h5 className="mb-0 placeholder-glow">
+              <span className="placeholder col-3" />
+            </h5>
+          </CardHeader>
+          <CardBody>
+            <dl className="mb-0 placeholder-glow">
+              {Array(8)
+                .fill(0)
+                .map((_, i) => (
+                  <div key={i} className="row align-items-center mb-1">
+                    <dt className="col-sm-3">
+                      <span className="placeholder col-6" />
+                    </dt>
+                    <dd className="col-sm-9 mb-0">
+                      <span className="placeholder col-12" />
+                    </dd>
+                  </div>
+                ))}
+            </dl>
+          </CardBody>
+        </Card>
       </Container>
     );
+
   if (!data)
     return (
-      <Container>
-        <p>Loading...</p>
+      <Container className="mt-3">
+        <Card>
+          <CardHeader />
+          <CardBody>
+            <dl className="mb-0" />
+          </CardBody>
+        </Card>
       </Container>
     );
 

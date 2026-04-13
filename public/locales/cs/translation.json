@@ -94,6 +94,7 @@
     "ID": "ID",
     "Phone": "Telefon",
     "IP address": "IP adresa",
-    "MAC address": "MAC adresa"
+    "MAC address": "MAC adresa",
+    "Failed to load detail": "Nepodařilo se načíst detail"
   }
 }
