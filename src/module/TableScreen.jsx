@@ -97,7 +97,10 @@ export function TableScreen(props) {
 				loader={loader}
 				header={
 					<div>
-						<h5 className="mb-0">{t('Training|Users table')}</h5>
+						<h5 className="mb-0">
+							<i className="bi bi-table me-2" />
+							{t('Training|Users')}
+						</h5>
 					</div>
 				}
 			/>
