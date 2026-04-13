@@ -2,6 +2,7 @@
 	"name": "teskalabs_training_ui_app",
 	"version": "26.1.1",
 	"main": "index.js",
+	"packageManager": "pnpm@10.33.0",
 	"scripts": {
 		"start": "webpack serve --config webpack/webpack.dev.js",
 		"build": "webpack --config webpack/webpack.build.js"
