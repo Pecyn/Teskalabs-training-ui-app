@@ -1,3 +1,10 @@
+.sort-span-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.5rem;
+}
+
 .address-cell {
 	display: -webkit-box;
 	-webkit-line-clamp: 1;

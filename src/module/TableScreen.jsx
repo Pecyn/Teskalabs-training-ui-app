@@ -8,7 +8,12 @@ import './TableScreen.scss';
 const DATA_URL = 'https://devtest.teskalabs.com/data';
 const getColumns = (t) => [
 	{
-		title: t('Training|Username'),
+		title: (
+			<span>
+				<i className="bi bi-person me-1" />
+				{t('Training|Username')}
+			</span>
+		),
 		sort: 'username',
 		colStyle: { width: '15%' },
 		render: ({ row }) => (
@@ -18,25 +23,45 @@ const getColumns = (t) => [
 		),
 	},
 	{
-		title: t('Training|Email'),
+		title: (
+			<span>
+				<i className="bi bi-envelope me-1" />
+				{t('Training|Email')}
+			</span>
+		),
 		sort: 'email',
 		colStyle: { width: '20%' },
 		render: ({ row }) => <span>{row.email}</span>,
 	},
 	{
-		title: t('Training|Address'),
+		title: (
+			<span>
+				<i className="bi bi-geo-alt me-1" />
+				{t('Training|Address')}
+			</span>
+		),
 		sort: 'address',
 		colStyle: { width: '25%' },
 		render: ({ row }) => <span className="address-cell">{row.address}</span>,
 	},
 	{
-		title: t('Training|Created'),
+		title: (
+			<span>
+				<i className="bi bi-calendar-plus me-1" />
+				{t('Training|Created')}
+			</span>
+		),
 		sort: 'created',
 		colStyle: { width: '20%' },
 		render: ({ row }) => <DateTime value={row.created} />,
 	},
 	{
-		title: t('Training|Last sign in'),
+		title: (
+			<span>
+				<i className="bi bi-box-arrow-in-right me-1" />
+				{t('Training|Last sign in')}
+			</span>
+		),
 		sort: 'last_sign_in',
 		colStyle: { width: '20%' },
 		render: ({ row }) => <DateTime value={row.last_sign_in} />,
@@ -60,7 +85,6 @@ export function TableScreen(props) {
 			<DataTableCard2
 				columns={columns}
 				initialLimit={20}
-				// rowHeight={38}
 				loader={loader}
 				header={
 					<div>

@@ -104,37 +104,93 @@ export function DetailScreen() {
 				</CardHeader>
 				<CardBody>
 					<dl className="mb-0">
-						<CardBodyItem label={t('Training|ID')}>
+						<CardBodyItem
+							label={
+								<>
+									<i className="bi bi-hash me-1" />
+									{t('Training|ID')}
+								</>
+							}
+						>
 							<CopyableInput value={data.id} type="text" />
 						</CardBodyItem>
 
-						<CardBodyItem label={t('Training|Email')}>
+						<CardBodyItem
+							label={
+								<>
+									<i className="bi bi-envelope me-1" />
+									{t('Training|Email')}
+								</>
+							}
+						>
 							<CopyableInput value={data.email} type="text" />
 						</CardBodyItem>
 
-						<CardBodyItem label={t('Training|Address')}>
+						<CardBodyItem
+							label={
+								<>
+									<i className="bi bi-geo-alt me-1" />
+									{t('Training|Address')}
+								</>
+							}
+						>
 							<CopyableInput value={data.address} type="text" />
 						</CardBodyItem>
 
-						<CardBodyItem label={t('Training|Phone')}>
+						<CardBodyItem
+							label={
+								<>
+									<i className="bi bi-telephone me-1" />
+									{t('Training|Phone')}
+								</>
+							}
+						>
 							<CopyableInput value={data.phone_number} type="text" />
 						</CardBodyItem>
 
-						<CardBodyItem label={t('Training|IP address')}>
+						<CardBodyItem
+							label={
+								<>
+									<i className="bi bi-hdd-network me-1" />
+									{t('Training|IP address')}
+								</>
+							}
+						>
 							<CopyableInput value={data.ip_address} type="text" />
 						</CardBodyItem>
 
-						<CardBodyItem label={t('Training|MAC address')}>
+						<CardBodyItem
+							label={
+								<>
+									<i className="bi bi-ethernet me-1" />
+									{t('Training|MAC address')}
+								</>
+							}
+						>
 							<CopyableInput value={data.mac_address} type="text" />
 						</CardBodyItem>
 
-						<CardBodyItem label={t('Training|Created')}>
+						<CardBodyItem
+							label={
+								<>
+									<i className="bi bi-calendar-plus me-1" />
+									{t('Training|Created')}
+								</>
+							}
+						>
 							<div className="py-2">
 								<DateTime value={data.created} />
 							</div>
 						</CardBodyItem>
 
-						<CardBodyItem label={t('Training|Last sign in')}>
+						<CardBodyItem
+							label={
+								<>
+									<i className="bi bi-box-arrow-in-right me-1" />
+									{t('Training|Last sign in')}
+								</>
+							}
+						>
 							<div className="py-2">
 								<DateTime value={data.last_sign_in} />
 							</div>
