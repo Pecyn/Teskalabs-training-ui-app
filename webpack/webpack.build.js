@@ -1,33 +1,33 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const { merge } = require('webpack-merge');
 
 const commonConfig = require('./webpack.common');
 
-const CopyWebpackPlugin = require("copy-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const buildConfig = {
-	mode: "production",
-	entry: path.resolve(__dirname, "../src/index.jsx"),
+	mode: 'production',
+	entry: path.resolve(__dirname, '../src/index.jsx'),
 	output: {
-		path: path.resolve(__dirname, "../dist"),
-		filename: "bundle.[contenthash].js",
+		path: path.resolve(__dirname, '../dist'),
+		filename: 'bundle.[contenthash].js',
 		clean: true,
-		publicPath: "./"
+		publicPath: '/',
 	},
 	resolve: {
-		extensions: [".js", ".jsx"]
+		extensions: ['.js', '.jsx'],
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
-			template: path.resolve(__dirname, "../public/index.html"),
-			minify: true
+			template: path.resolve(__dirname, '../public/index.html'),
+			minify: true,
 		}),
 		new MiniCssExtractPlugin({
-			filename: "[name].[contenthash].css"
+			filename: '[name].[contenthash].css',
 		}),
 		new CopyWebpackPlugin({
 			patterns: [
@@ -37,8 +37,8 @@ const buildConfig = {
 		}),
 	],
 	optimization: {
-		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()]
-	}
+		minimizer: [new CssMinimizerPlugin(), new TerserPlugin()],
+	},
 };
 
 module.exports = merge(commonConfig, buildConfig);
