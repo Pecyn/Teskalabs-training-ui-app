@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
+import { useParams, useNavigate, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { Container, Card, CardHeader, CardBody } from 'reactstrap';
 import { DateTime, CopyableInput, usePubSub } from 'asab_webui_components';
@@ -17,6 +17,9 @@ function CardBodyItem({ label, children }) {
 
 export function DetailScreen() {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const cameFromTable = location.state?.from === 'table';
   const { t } = useTranslation();
   const { app } = usePubSub();
   const [data, setData] = useState(null);
@@ -86,8 +89,18 @@ export function DetailScreen() {
   return (
     <Container className="mt-3">
       <Card>
-        <CardHeader>
-          <h5 className="mb-0">{data.username}</h5>
+        <CardHeader className="d-flex align-items-center gap-2">
+          <button
+            type="button"
+            className="btn btn-outline-secondary btn-sm"
+            onClick={() => (cameFromTable ? navigate(-1) : navigate('/table'))}
+          >
+            <i className="bi bi-chevron-left" />
+          </button>
+          <h5 className="mb-0">
+            <i className="bi bi-person me-2" />
+            {data.username}
+          </h5>
         </CardHeader>
         <CardBody>
           <dl className="mb-0">

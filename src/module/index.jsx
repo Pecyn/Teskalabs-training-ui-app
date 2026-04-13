@@ -1,3 +1,5 @@
+import React from 'react';
+import { Navigate } from 'react-router';
 import { Module } from 'asab_webui_components';
 
 import { TableScreen } from './TableScreen.jsx';
@@ -9,13 +11,18 @@ export default class TableApplicationModule extends Module {
 
     app.Router.addRoute({
       path: '/',
-      end: false,
+      component: () =>
+        React.createElement(Navigate, { to: '/table', replace: true }),
+    });
+
+    app.Router.addRoute({
+      path: '/table',
       name: 'Table',
       component: TableScreen,
     });
 
     app.Router.addRoute({
-      path: '/detail/:id',
+      path: '/table/:id',
       name: 'Detail',
       component: DetailScreen,
     });
@@ -23,7 +30,7 @@ export default class TableApplicationModule extends Module {
     app.Navigation.addItem({
       name: 'Table',
       icon: 'bi bi-table',
-      url: '/',
+      url: '/table',
     });
   }
 }

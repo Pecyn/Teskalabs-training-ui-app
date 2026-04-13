@@ -10,7 +10,7 @@ const getColumns = (t) => [
     title: t('Training|Username'),
     sort: 'username',
     render: ({ row }) => (
-      <Link title={row.id} to={`/detail/${row.id}`}>
+      <Link title={row.id} to={`/table/${row.id}`} state={{ from: 'table' }}>
         {row.username}
       </Link>
     ),
@@ -51,7 +51,19 @@ export function TableScreen(props) {
   const columns = getColumns(t);
   return (
     <Container className="h-100">
-      <DataTableCard2 columns={columns} initialLimit={10} loader={loader} />
+      <DataTableCard2
+        columns={columns}
+        initialLimit={10}
+        loader={loader}
+        header={
+          <div>
+            <h5 className="mb-0">
+              <i className="bi bi-table me-2" />
+              {t('Training|Users table')}
+            </h5>
+          </div>
+        }
+      />
     </Container>
   );
 }
