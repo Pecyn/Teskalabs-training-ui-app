@@ -90,6 +90,10 @@
     "Email": "Email",
     "Address": "Address",
     "Created": "Created",
-    "Last sign in": "Last sign in"
+    "Last sign in": "Last sign in",
+    "ID": "ID",
+    "Phone": "Phone",
+    "IP address": "IP address",
+    "MAC address": "MAC address"
   }
 }

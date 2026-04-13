@@ -15,7 +15,7 @@ export default class TableApplicationModule extends Module {
     });
 
     app.Router.addRoute({
-      path: '/detail/:username',
+      path: '/detail/:id',
       name: 'Detail',
       component: DetailScreen,
     });

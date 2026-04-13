@@ -90,6 +90,10 @@
     "Email": "E-mail",
     "Address": "Adresa",
     "Created": "Vytvořeno",
-    "Last sign in": "Poslední přihlášení"
+    "Last sign in": "Poslední přihlášení",
+    "ID": "ID",
+    "Phone": "Telefon",
+    "IP address": "IP adresa",
+    "MAC address": "MAC adresa"
   }
 }

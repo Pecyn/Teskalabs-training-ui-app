@@ -10,7 +10,7 @@ const getColumns = (t) => [
     title: t('Training|Username'),
     sort: 'username',
     render: ({ row }) => (
-      <Link title={row.id} to={`/detail/${row.username}`}>
+      <Link title={row.id} to={`/detail/${row.id}`}>
         {row.username}
       </Link>
     ),
