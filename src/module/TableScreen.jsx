@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'reactstrap';
+import { Container, UncontrolledTooltip } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 import { DataTableCard2, DateTime } from 'asab_webui_components';
@@ -17,9 +17,18 @@ const getColumns = (t) => [
 		sort: 'username',
 		colStyle: { width: '15%' },
 		render: ({ row }) => (
-			<Link title={row.id} to={`/table/${row.id}`} state={{ from: 'table' }}>
-				{row.username}
-			</Link>
+			<>
+				<Link
+					id={`user-${row.id}`}
+					to={`/table/${row.id}`}
+					state={{ from: 'table' }}
+				>
+					{row.username}
+				</Link>
+				<UncontrolledTooltip target={`user-${row.id}`}>
+					{row.id}
+				</UncontrolledTooltip>
+			</>
 		),
 	},
 	{
@@ -88,10 +97,7 @@ export function TableScreen(props) {
 				loader={loader}
 				header={
 					<div>
-						<h5 className="mb-0">
-							<i className="bi bi-table me-2" />
-							{t('Training|Users table')}
-						</h5>
+						<h5 className="mb-0">{t('Training|Users table')}</h5>
 					</div>
 				}
 			/>
