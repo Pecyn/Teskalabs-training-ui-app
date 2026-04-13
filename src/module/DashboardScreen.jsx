@@ -17,6 +17,7 @@ import {
 
 const DATA_URL = 'https://devtest.teskalabs.com/data';
 const PAGE_SIZE = 50;
+const INACTIVE_USERS_COUNT = 5;
 
 async function fetchAllUsers() {
 	// Fetch first page to get total count, then fetch remaining pages
@@ -122,16 +123,18 @@ function InactiveUsersTable({ rows = [], loading = false }) {
 					</thead>
 					<tbody>
 						{loading
-							? [0, 1, 2, 3, 4].map((i) => (
-									<tr key={i}>
-										<td>
-											<span className="placeholder bg-secondary w-75" />
-										</td>
-										<td>
-											<span className="placeholder bg-secondary w-50" />
-										</td>
-									</tr>
-								))
+							? Array.from({ length: INACTIVE_USERS_COUNT }, (_, i) => i).map(
+									(i) => (
+										<tr key={i}>
+											<td>
+												<span className="placeholder bg-secondary w-75" />
+											</td>
+											<td>
+												<span className="placeholder bg-secondary w-50" />
+											</td>
+										</tr>
+									),
+								)
 							: rows.map((user) => (
 									<tr key={user.id}>
 										<td>{user.username}</td>
@@ -147,26 +150,28 @@ function InactiveUsersTable({ rows = [], loading = false }) {
 	);
 }
 
-export function DashboardSkeleton({ users = null, loading = false }) {
+export function DashboardView({ users = null, loading = false }) {
 	const { t } = useTranslation();
 
 	const totalUsers = loading ? null : users.length;
-	const newestUser = loading
-		? null
-		: [...users].sort((a, b) => b.created - a.created)[0];
-	const mostRecentActive = loading
-		? null
-		: [...users].sort((a, b) => b.last_sign_in - a.last_sign_in)[0];
-	const leastRecentActive = loading
+	const sortedByCreated = loading
 		? []
-		: [...users].sort((a, b) => a.last_sign_in - b.last_sign_in).slice(0, 5);
+		: [...users].sort((a, b) => b.created - a.created);
+	const sortedByActivity = loading
+		? []
+		: [...users].sort((a, b) => b.last_sign_in - a.last_sign_in);
+	const newestUser = sortedByCreated[0] ?? null;
+	const mostRecentActive = sortedByActivity[0] ?? null;
+	const leastRecentActive = sortedByActivity
+		.slice(-INACTIVE_USERS_COUNT)
+		.reverse();
 	const registrationsPerMonth = loading ? [] : groupByMonth(users, 'created');
 	const lastActivityPerMonth = loading
 		? []
 		: groupByMonth(users, 'last_sign_in');
 
 	return (
-		<div className={loading ? 'placeholder-glow' : ''}>
+		<div className={loading ? 'placeholder-glow' : undefined}>
 			{/* Stat cards */}
 			<Row className="g-3 mb-4">
 				<Col md={4}>
@@ -182,7 +187,7 @@ export function DashboardSkeleton({ users = null, loading = false }) {
 						icon="bi bi-person-plus"
 						label={t('Training|Newest user')}
 						value={newestUser?.username}
-						sub={<DateTime value={newestUser?.created} />}
+						sub={loading ? undefined : <DateTime value={newestUser?.created} />}
 						loading={loading}
 					/>
 				</Col>
@@ -191,7 +196,11 @@ export function DashboardSkeleton({ users = null, loading = false }) {
 						icon="bi bi-activity"
 						label={t('Training|Most recently active')}
 						value={mostRecentActive?.username}
-						sub={<DateTime value={mostRecentActive?.last_sign_in} />}
+						sub={
+							loading ? undefined : (
+								<DateTime value={mostRecentActive?.last_sign_in} />
+							)
+						}
 						loading={loading}
 					/>
 				</Col>
@@ -260,7 +269,7 @@ export function DashboardSkeleton({ users = null, loading = false }) {
 
 function DashboardContent({ usersPromise }) {
 	const users = use(usersPromise);
-	return <DashboardSkeleton users={users} />;
+	return <DashboardView users={users} />;
 }
 
 export function DashboardScreen() {
@@ -272,7 +281,7 @@ export function DashboardScreen() {
 				<i className="bi bi-speedometer2 me-2" />
 				{'Dashboard'}
 			</h5>
-			<Suspense fallback={<DashboardSkeleton loading />}>
+			<Suspense fallback={<DashboardView loading />}>
 				<DashboardContent usersPromise={usersPromise} />
 			</Suspense>
 		</Container>

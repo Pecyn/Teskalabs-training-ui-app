@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import { DashboardScreen, DashboardSkeleton } from '../DashboardScreen';
+import { DashboardScreen, DashboardView } from '../DashboardScreen';
 
 // Module mocks
 jest.mock('react-i18next', () => ({
@@ -44,9 +44,9 @@ beforeEach(() => {
 });
 
 // DashboardSkeleton unit tests
-describe('DashboardSkeleton', () => {
+describe('DashboardView', () => {
 	test('shows placeholder-glow and all card titles when loading', () => {
-		const { container } = render(<DashboardSkeleton loading />);
+		const { container } = render(<DashboardView loading />);
 
 		expect(container.querySelector('.placeholder-glow')).toBeInTheDocument();
 		expect(screen.getByText('Training|Total users')).toBeInTheDocument();
@@ -66,18 +66,16 @@ describe('DashboardSkeleton', () => {
 	});
 
 	test('shows placeholder spans but no real user data when loading', () => {
-		const { container } = render(<DashboardSkeleton loading />);
+		const { container } = render(<DashboardView loading />);
 
-		// No real values — only placeholder spans in stat card bodies
 		expect(
 			container.querySelector('.placeholder.bg-secondary'),
 		).toBeInTheDocument();
-		// No user data rendered
 		expect(screen.queryByText('alice')).not.toBeInTheDocument();
 	});
 
 	test('renders real data and no placeholder-glow when users are provided', () => {
-		const { container } = render(<DashboardSkeleton users={mockUsers} />);
+		const { container } = render(<DashboardView users={mockUsers} />);
 
 		expect(
 			container.querySelector('.placeholder-glow'),
@@ -91,7 +89,7 @@ describe('DashboardSkeleton', () => {
 	});
 
 	test('shows all six card titles with real data', () => {
-		render(<DashboardSkeleton users={mockUsers} />);
+		render(<DashboardView users={mockUsers} />);
 
 		expect(screen.getByText('Training|Total users')).toBeInTheDocument();
 		expect(screen.getByText('Training|Newest user')).toBeInTheDocument();
@@ -111,7 +109,20 @@ describe('DashboardSkeleton', () => {
 });
 
 // DashboardScreen integration tests
+// React 19 + Suspense emits a console.error about un-awaited act() when a
+// promise never resolves. The behaviour under test is correct; suppress the noise.
 describe('DashboardScreen', () => {
+	let consoleErrorSpy;
+	beforeEach(() => {
+		consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation((...args) => {
+			if (typeof args[0] === 'string' && args[0].includes('`act` scope')) return;
+			console.error(...args);
+		});
+	});
+	afterEach(() => {
+		consoleErrorSpy.mockRestore();
+	});
+
 	test('shows loading skeleton (Suspense fallback) while fetch is pending', () => {
 		global.fetch = jest.fn(() => new Promise(() => {})); // never resolves
 
