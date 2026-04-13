@@ -3,12 +3,14 @@ import { Container } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router';
 import { DataTableCard2, DateTime } from 'asab_webui_components';
+import './TableScreen.scss';
 
 const DATA_URL = 'https://devtest.teskalabs.com/data';
 const getColumns = (t) => [
 	{
 		title: t('Training|Username'),
 		sort: 'username',
+		colStyle: { width: '15%' },
 		render: ({ row }) => (
 			<Link title={row.id} to={`/table/${row.id}`} state={{ from: 'table' }}>
 				{row.username}
@@ -18,21 +20,25 @@ const getColumns = (t) => [
 	{
 		title: t('Training|Email'),
 		sort: 'email',
+		colStyle: { width: '20%' },
 		render: ({ row }) => <span>{row.email}</span>,
 	},
 	{
 		title: t('Training|Address'),
 		sort: 'address',
-		render: ({ row }) => <span>{row.address}</span>,
+		colStyle: { width: '25%' },
+		render: ({ row }) => <span className="address-cell">{row.address}</span>,
 	},
 	{
 		title: t('Training|Created'),
 		sort: 'created',
+		colStyle: { width: '20%' },
 		render: ({ row }) => <DateTime value={row.created} />,
 	},
 	{
 		title: t('Training|Last sign in'),
 		sort: 'last_sign_in',
+		colStyle: { width: '20%' },
 		render: ({ row }) => <DateTime value={row.last_sign_in} />,
 	},
 ];
@@ -53,7 +59,8 @@ export function TableScreen(props) {
 		<Container className="h-100">
 			<DataTableCard2
 				columns={columns}
-				initialLimit={10}
+				initialLimit={20}
+				// rowHeight={38}
 				loader={loader}
 				header={
 					<div>
