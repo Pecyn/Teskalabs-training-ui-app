@@ -33,6 +33,41 @@ jest.mock('reactstrap', () => ({
 	CardBody: ({ children, ...p }) => <div {...p}>{children}</div>,
 }));
 
+jest.mock('@dnd-kit/core', () => ({
+	DndContext: ({ children }) => children,
+	DragOverlay: ({ children }) => children ?? null,
+	closestCenter: () => null,
+	PointerSensor: class {},
+	useSensor: () => ({}),
+	useSensors: (...args) => args,
+}));
+
+jest.mock('@dnd-kit/modifiers', () => ({
+	restrictToWindowEdges: () => ({}),
+}));
+
+jest.mock('@dnd-kit/sortable', () => ({
+	SortableContext: ({ children }) => children,
+	useSortable: () => ({
+		attributes: {},
+		listeners: {},
+		setNodeRef: () => {},
+		transform: null,
+		transition: null,
+		isDragging: false,
+	}),
+	horizontalListSortingStrategy: () => null,
+	arrayMove: (arr, from, to) => {
+		const result = [...arr];
+		result.splice(to, 0, result.splice(from, 1)[0]);
+		return result;
+	},
+}));
+
+jest.mock('@dnd-kit/utilities', () => ({
+	CSS: { Transform: { toString: () => '' } },
+}));
+
 // Test data
 const mockUsers = [
 	{ id: '1', username: 'alice', created: 1700000000, last_sign_in: 1702000000 },
@@ -114,10 +149,13 @@ describe('DashboardView', () => {
 describe('DashboardScreen', () => {
 	let consoleErrorSpy;
 	beforeEach(() => {
-		consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation((...args) => {
-			if (typeof args[0] === 'string' && args[0].includes('`act` scope')) return;
-			console.error(...args);
-		});
+		consoleErrorSpy = jest
+			.spyOn(console, 'error')
+			.mockImplementation((...args) => {
+				if (typeof args[0] === 'string' && args[0].includes('`act` scope'))
+					return;
+				console.error(...args);
+			});
 	});
 	afterEach(() => {
 		consoleErrorSpy.mockRestore();
