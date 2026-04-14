@@ -81,71 +81,91 @@ function StatCard({ icon, label, value, sub = undefined, loading = false }) {
 }
 
 function ChartCard({ icon, title, children, loading = false }) {
+	const [isOpen, setIsOpen] = useState(true);
 	return (
-		<Card className="h-100">
-			<CardHeader>
+		<Card className={isOpen ? 'h-100' : undefined}>
+			<CardHeader
+				className="d-flex justify-content-between align-items-center"
+				style={{ cursor: 'pointer', userSelect: 'none' }}
+				onClick={() => setIsOpen((o) => !o)}
+			>
 				<span className="fw-semibold">
 					<i className={`${icon} me-2`} />
 					{title}
 				</span>
+				<span className="btn btn-outline-secondary btn-sm">
+					<i className={`bi bi-chevron-${isOpen ? 'up' : 'down'}`} />
+				</span>
 			</CardHeader>
-			<CardBody>
-				{loading ? (
-					<span
-						className="placeholder bg-secondary d-block rounded"
-						style={{ height: 250 }}
-					/>
-				) : (
-					children
-				)}
-			</CardBody>
+			{isOpen && (
+				<CardBody>
+					{loading ? (
+						<span
+							className="placeholder bg-secondary d-block rounded"
+							style={{ height: 250 }}
+						/>
+					) : (
+						children
+					)}
+				</CardBody>
+			)}
 		</Card>
 	);
 }
 
 function InactiveUsersTable({ rows = [], loading = false }) {
 	const { t } = useTranslation();
+	const [isOpen, setIsOpen] = useState(true);
 	return (
 		<Card>
-			<CardHeader>
+			<CardHeader
+				className="d-flex justify-content-between align-items-center"
+				style={{ cursor: 'pointer', userSelect: 'none' }}
+				onClick={() => setIsOpen((o) => !o)}
+			>
 				<span className="fw-semibold">
 					<i className="bi bi-clock-history me-2" />
 					{t('Training|Longest inactive users')}
 				</span>
+				<span className="btn btn-outline-secondary btn-sm">
+					<i className={`bi bi-chevron-${isOpen ? 'up' : 'down'}`} />
+				</span>
 			</CardHeader>
-			<CardBody className="p-0">
-				<table className="table table-hover mb-0">
-					<thead>
-						<tr>
-							<th>{t('Training|Username')}</th>
-							<th>{t('Training|Last sign in')}</th>
-						</tr>
-					</thead>
-					<tbody>
-						{loading
-							? Array.from({ length: INACTIVE_USERS_COUNT }, (_, i) => i).map(
-									(i) => (
-										<tr key={i}>
+			{isOpen && (
+				<CardBody className="p-0">
+					<table className="table table-hover mb-0">
+						<thead>
+							<tr>
+								<th>{t('Training|Username')}</th>
+								<th>{t('Training|Last sign in')}</th>
+							</tr>
+						</thead>
+						<tbody>
+							{loading
+								? Array.from({ length: INACTIVE_USERS_COUNT }, (_, i) => i).map(
+										(i) => (
+											<tr key={i}>
+												<td>
+													<span className="placeholder bg-secondary w-75" />
+												</td>
+												<td>
+													<span className="placeholder bg-secondary w-50" />
+												</td>
+											</tr>
+										),
+									)
+								: rows.map((user) => (
+										<tr key={user.id}>
+											<td>{user.username}</td>
 											<td>
-												<span className="placeholder bg-secondary w-75" />
-											</td>
-											<td>
-												<span className="placeholder bg-secondary w-50" />
+												<DateTime value={user.last_sign_in} />
 											</td>
 										</tr>
-									),
-								)
-							: rows.map((user) => (
-									<tr key={user.id}>
-										<td>{user.username}</td>
-										<td>
-											<DateTime value={user.last_sign_in} />
-										</td>
-									</tr>
-								))}
-					</tbody>
-				</table>
-			</CardBody>
+									))}
+						</tbody>
+					</table>
+				</CardBody>
+			)}
 		</Card>
 	);
 }
